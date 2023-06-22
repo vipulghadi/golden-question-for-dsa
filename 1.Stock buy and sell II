@@ -1,0 +1,58 @@
+1.Stock buy and sell II
+
+int buy,sell;
+   int i=0;
+   int count=0;
+   while(i<n-1)
+   {
+       //minima
+       while(i<n-1 && price[i+1]<price[i])
+           i++;
+       buy=i;
+       i++;
+       
+       while(i<n && price[i]>price[i-1])
+           i++;
+       sell=i-1;
+       
+       if(price[buy]<price[sell])
+       {
+           count++;
+           cout<<"("<<buy<<" "<<sell<<")"<<" ";
+       }
+   }
+   if(count==0)
+       cout<<"No Profit";
+   cout<<endl;
+       
+        ----------------------------------------------------------------------
+ int s=0;
+        int i;
+        int count=0;
+        for(i=1;i<n;)
+        {
+            if(arr[i]>arr[i-1])
+            {
+                i++;
+            }
+            else if(arr[i]<=arr[i-1])
+            {
+                if(s!=(i-1))
+                {
+                cout<<"("<<s<<" "<<i-1<<") ";
+                count++;
+                }
+                s=i;
+                i++;
+            }
+        }
+        if(s<n && i==n && s!=(i-1) && arr[s]<arr[i-1])
+        {
+            cout<<"("<<s<<" "<<i-1<<") ";
+            count++;
+        }
+        if(count==0)
+        {
+            cout<<"No Profit";
+        }
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
