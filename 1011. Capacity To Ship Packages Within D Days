@@ -1,0 +1,53 @@
+class Solution {
+public:
+    int dayCalc(vector<int>&arr,int mid)
+    { int csum=0,cday=0;
+        for( int j=0;j<arr.size();)
+            {
+                csum=csum+arr[j];
+                if(csum==mid){
+                   cday++;
+                    csum=0;
+                    j++;
+                }
+               else  if(csum>mid){
+                  csum=csum-arr[j];
+                    cday++;
+                    csum=0;
+                }
+                else
+                j++;
+             
+            }
+            if(csum<=mid && csum!=0)cday++;
+            return cday;
+
+    }
+
+
+    int shipWithinDays(vector<int>&arr, int days) {
+        int maxi=INT_MIN,sum=0,i,ans=-1;
+
+        for(int i=0;i<arr.size();i++)
+        {   sum=sum+arr[i];
+            maxi=max(arr[i],maxi);
+        }
+
+        while(maxi<=sum)
+        {
+            int mid=(maxi+sum)/2;
+            int cday=dayCalc(arr,mid);
+            if(cday>days)
+            {
+                maxi=mid+1;
+            }
+            else
+            {
+                sum=mid-1;
+            }
+
+        }
+return maxi;
+    }
+};
+------------------------------------------------------------------------------------------
